@@ -7,7 +7,7 @@ file-functions for node.js that return Promises
 [`npm i filesac`](https://www.npmjs.com/package/filesac)
 
 ## Import
-
+    
 ```
 const {
     textFileContent,
