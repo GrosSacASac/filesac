@@ -1,22 +1,21 @@
 # filesac
 
+file-functions for node.js that return Promises
+
 ## Installation
 
 [`npm i filesac`](https://www.npmjs.com/package/filesac)
 
-## files.js
-
-file-functions for node.js that return Promises
-
+## Import
 
 ```
-    import {
-        textFileContent,
-        writeTextInFile,
-        concatenateFiles,
-        copyFile,
-        deleteFile
-    } from "./files.js"
+const {
+    textFileContent,
+    writeTextInFile,
+    concatenateFiles,
+    copyFile,
+    deleteFile
+} = require("filesac");
 ```
 
 ## About
