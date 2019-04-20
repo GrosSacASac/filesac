@@ -1,0 +1,24 @@
+{
+  "name": "filesac",
+  "version": "10.0.0",
+  "description": "File utility functions",
+  "main": "files.js",
+  "scripts": {
+    "test": "echo see tests"
+  },
+  "files": [
+    "fles.js",
+    "readme.js",
+    "changelog.md",
+    "license.txt"
+  ],
+  "keywords": [
+    "utility",
+    "file"
+  ],
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/GrosSacASac/filesac.git"
+  }
+}
