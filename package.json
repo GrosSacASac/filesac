@@ -1,10 +1,11 @@
 {
   "name": "filesac",
-  "version": "10.0.2",
+  "version": "11.0.0",
   "description": "File utility functions",
+  "type": "module",
   "main": "files.js",
   "scripts": {
-    "test": "echo see tests"
+    "test": "node --experimental-modules tests/files-test.js"
   },
   "files": [
     "files.js",

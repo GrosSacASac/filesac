@@ -9,13 +9,13 @@ file-functions for node.js that return Promises
 ## Import
     
 ```
-const {
+import {
     textFileContent,
     writeTextInFile,
     concatenateFiles,
     copyFile,
     deleteFile
-} = require("filesac");
+} from "filesac";
 ```
 
 ## About
