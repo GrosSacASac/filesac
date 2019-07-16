@@ -3,9 +3,8 @@ export {
     writeTextInFile,
     concatenateFiles,
     copyFile,
-    deleteFile
+    deleteFile,
 };
-
 import fs from "fs";
 import path from "path";
 

@@ -14,7 +14,7 @@ import {
     writeTextInFile,
     concatenateFiles,
     copyFile,
-    deleteFile
+    deleteFile,
 } from "filesac";
 ```
 
