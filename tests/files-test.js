@@ -6,13 +6,20 @@ import {
     deleteFile
 } from "../files.js";
 
+
 const initialString = `abc - éùô - xwz`;
 
-const pathDeep = `a/b/c.txt`;
+const a = `a`;
+const b = `b`;
+const pathDeep = `${a}/${b}/c.txt`;
 
 writeTextInFile(pathDeep, initialString).then(function () {
-    textFileContent(pathDeep).then(function (result) {
+    textFileContent(pathDeep).then(async function (result) {
         console.log(`success`, result === initialString);
         console.log(result);
-    })
+
+        await deleteFile(pathDeep);
+    });
 });
+
+

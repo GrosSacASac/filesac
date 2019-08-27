@@ -14,8 +14,7 @@ const createNecessaryDirectories = function (filePath) {
     if (fs.existsSync(directoryname)) {
         return;
     }
-    createNecessaryDirectories(directoryname);
-    fs.mkdirSync(directoryname);
+    fs.mkdirSync(directoryname, { recursive: true });
 };
 
 const textFileContent = function (filePath) {
