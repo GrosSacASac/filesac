@@ -28,3 +28,23 @@ import {
 ### License
 
 [CC0](./license.txt)
+filesac
+file-функции для node.js, которые возвращают Promises
+
+установка
+Npm я Filesac
+
+импорт
+import {
+     textFileContent,
+     writeTextInFile,
+     concatenateFiles,
+     CopyFile,
+     DeleteFile,
+} из "filesac";
+о
+изменений
+изменений
+
+лицензия
+СС0
