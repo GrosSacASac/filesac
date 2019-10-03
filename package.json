@@ -1,25 +1,44 @@
 {
-  "name": "filesac",
-  "version": "11.0.1",
-  "description": "File utility functions",
-  "type": "module",
-  "main": "files.js",
-  "scripts": {
-    "test": "node --experimental-modules tests/files-test.js"
-  },
-  "files": [
-    "files.js",
-    "readme.me",
-    "changelog.md",
-    "license.txt"
-  ],
-  "keywords": [
-    "utility",
-    "file"
-  ],
-  "license": "CC0-1.0",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/GrosSacASac/filesac.git"
-  }
+	"name": "filesac",
+	"version": "11.0.1",
+	"description": "File utility functions",
+	"type": "module",
+	"main": "files.js",
+	"scripts": {
+		"test": "node --experimental-modules tests/files-test.js",
+		"lint-fix": "eslint --ignore-path .gitignore --fix files.js",
+		"lint": "eslint --ignore-path .gitignore files.js"
+	},
+	"files": [
+		"files.js",
+		"readme.me",
+		"changelog.md",
+		"license.txt"
+	],
+	"keywords": [
+		"utility",
+		"file"
+	],
+	"license": "CC0-1.0",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/GrosSacASac/filesac.git"
+	},
+	"eslintConfig": {
+		"extends": [
+			"red"
+		],
+		"parserOptions": {
+			"ecmaVersion": 2020,
+			"sourceType": "module"
+		},
+		"env": {
+			"node": true,
+			"es6": true
+		}
+	},
+	"devDependencies": {
+		"eslint": "^6.5.1",
+		"eslint-config-red": "^1.4.1"
+	}
 }
