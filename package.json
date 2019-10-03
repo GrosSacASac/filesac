@@ -5,7 +5,8 @@
   "type": "module",
   "main": "files.js",
   "scripts": {
-    "test": "node --experimental-modules tests/files-test.js"
+    "test": "node --experimental-modules tests/files-test.js",
+    "lint": "eslint files.js"
   },
   "files": [
     "files.js",
@@ -21,5 +22,9 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/GrosSacASac/filesac.git"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1"
   }
 }

@@ -19,7 +19,7 @@ const createNecessaryDirectories = function (filePath) {
 
 const textFileContent = function (filePath) {
     return new Promise(function (resolve, reject) {
-        fs.readFile(filePath, "utf-8", function (error, data) {
+        fs.readFile(filePath, `utf-8`, function (error, data) {
             if (error) {
                 reject(error);
                 return;
@@ -32,7 +32,7 @@ const textFileContent = function (filePath) {
 const writeTextInFile = function (filePath, string) {
     return new Promise(function (resolve, reject) {
         createNecessaryDirectories(filePath);
-        fs.writeFile(filePath, string, "utf-8", function (error, notUsed) {
+        fs.writeFile(filePath, string, `utf-8`, function (error) {
             if (error) {
                 reject(error);
                 return;
@@ -70,7 +70,7 @@ const copyFile = function (filePath, filePathDestination) {
 const deleteFile = function (sourcePath) {
     return new Promise(function (resolve, reject) {
         fs.unlink(sourcePath, function (error) {
-            if (error && error.code == "ENOENT") {
+            if (error && error.code === `ENOENT`) {
                 // file doens't exist
                 resolve(`File ${sourcePath} doesn't exist, won't remove it.`);
             } else if (error) {
