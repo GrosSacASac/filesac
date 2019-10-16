@@ -15,6 +15,7 @@ import {
     concatenateFiles,
     copyFile,
     deleteFile,
+    namesInDirectory,
 } from "filesac";
 ```
 

@@ -4,6 +4,7 @@ export {
     concatenateFiles,
     copyFile,
     deleteFile,
+    namesInDirectory,
 };
 import fs from "fs";
 import path from "path";
@@ -79,6 +80,18 @@ const deleteFile = function (sourcePath) {
             } else {
                 resolve(`removed`);
             }
+        });
+    });
+};
+
+const namesInDirectory = function (path) {
+    return new Promise(function (resolve, reject) {
+        fs.readdir(path, function (error, files) {
+            if (error) {
+                reject(error);
+                return;
+            }
+            resolve(files)
         });
     });
 };

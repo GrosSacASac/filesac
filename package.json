@@ -1,6 +1,6 @@
 {
 	"name": "filesac",
-	"version": "11.0.1",
+	"version": "11.1.0",
 	"description": "File utility functions",
 	"type": "module",
 	"main": "files.js",
