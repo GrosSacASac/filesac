@@ -1,5 +1,18 @@
 # Changelog
 
+## 12.0.0
+
+add
+
+ * copyDirectory (recursive)
+
+remove
+
+ * copyFile does not resolve with a string like "tests/files-test.js was copied to copyFile/files-test.js"
+ * copyFile resolves with undefined if successful
+ * deleteFile does not resolve with `File ${sourcePath} doesn't exist, won't remove it.` or `removed`
+ * deleteFile resolves with undefined if successful
+
 ## 11.1.0
 
 add

@@ -3,6 +3,7 @@ export {
     writeTextInFile,
     concatenateFiles,
     copyFile,
+    copyDirectory,
     deleteFile,
     namesInDirectory,
 };
@@ -63,7 +64,40 @@ const copyFile = function (filePath, filePathDestination) {
                 reject(error);
                 return;
             }
-            resolve(`${filePath} was copied to ${filePathDestination}`);
+            resolve();
+        });
+    });
+};
+
+const copyDirectory = function (directoryPath, directoryPathDestination) {
+    return new Promise(function (resolve, reject) {
+        if (!fs.existsSync(directoryPath)) {
+            reject(`${directoryPath} does not exist`);
+            return;
+        }
+
+        createNecessaryDirectories(directoryPathDestination);
+
+        fs.readdir(directoryPath, { withFileTypes: true}, (error, dirents) => {
+            if (error) {
+                reject(error);
+                return;
+            }
+            
+            Promise.all(dirents.map(function (dirent) {
+                const joinedSource = path.join(directoryPath, dirent.name);
+                const joinedDestination = path.join(directoryPathDestination, dirent.name);
+                if (dirent.isDirectory()) {
+                    if (!fs.existsSync(joinedDestination)) {
+                        fs.mkdirSync(joinedDestination, { recursive: true });
+                    }
+                    return copyDirectory(joinedSource, joinedDestination);
+                } else if (dirent.isFile()) {
+                    return copyFile(joinedSource, joinedDestination);
+                }
+            })).then(() => {
+                resolve();
+            }).catch(reject);
         });
     });
 };
@@ -73,12 +107,12 @@ const deleteFile = function (sourcePath) {
         fs.unlink(sourcePath, function (error) {
             if (error && error.code === `ENOENT`) {
                 // file doens't exist
-                resolve(`File ${sourcePath} doesn't exist, won't remove it.`);
+                resolve();
             } else if (error) {
                 // other errors, e.g. maybe we don't have enough permission
                 reject(`Error occurred while trying to remove file ${sourcePath}`);
             } else {
-                resolve(`removed`);
+                resolve();
             }
         });
     });

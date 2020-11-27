@@ -18,6 +18,7 @@ import {
     writeTextInFile,
     concatenateFiles,
     copyFile,
+    copyDirectory,
     deleteFile,
     namesInDirectory,
 } from "filesac";
