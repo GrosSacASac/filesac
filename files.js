@@ -92,7 +92,8 @@ const copyDirectory = function (directoryPath, directoryPathDestination) {
                         fs.mkdirSync(joinedDestination, { recursive: true });
                     }
                     return copyDirectory(joinedSource, joinedDestination);
-                } else if (dirent.isFile()) {
+                }
+                if (dirent.isFile()) {
                     return copyFile(joinedSource, joinedDestination);
                 }
             })).then(() => {
@@ -118,14 +119,14 @@ const deleteFile = function (sourcePath) {
     });
 };
 
-const namesInDirectory = function (path) {
+const namesInDirectory = function (directoryPath) {
     return new Promise(function (resolve, reject) {
-        fs.readdir(path, function (error, files) {
+        fs.readdir(directoryPath, function (error, files) {
             if (error) {
                 reject(error);
                 return;
             }
-            resolve(files)
+            resolve(files);
         });
     });
 };
