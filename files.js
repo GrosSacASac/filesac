@@ -96,9 +96,7 @@ const copyDirectory = function (directoryPath, directoryPathDestination) {
                 if (dirent.isFile()) {
                     return copyFile(joinedSource, joinedDestination);
                 }
-            })).then(() => {
-                resolve();
-            }).catch(reject);
+            })).then(resolve).catch(reject);
         });
     });
 };
