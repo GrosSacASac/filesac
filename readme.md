@@ -21,6 +21,7 @@ import {
     copyDirectory,
     deleteFile,
     namesInDirectory,
+    createNecessaryDirectoriesSync,
 } from "filesac";
 ```
 

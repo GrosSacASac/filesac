@@ -6,12 +6,13 @@ export {
     copyDirectory,
     deleteFile,
     namesInDirectory,
+    createNecessaryDirectoriesSync,
 };
 import fs from "fs";
 import path from "path";
 
 
-const createNecessaryDirectories = function (filePath) {
+const createNecessaryDirectoriesSync = function (filePath) {
     const directoryname = path.dirname(filePath);
     if (fs.existsSync(directoryname)) {
         return;
@@ -33,7 +34,7 @@ const textFileContent = function (filePath) {
 
 const writeTextInFile = function (filePath, string) {
     return new Promise(function (resolve, reject) {
-        createNecessaryDirectories(filePath);
+        createNecessaryDirectoriesSync(filePath);
         fs.writeFile(filePath, string, `utf-8`, function (error) {
             if (error) {
                 reject(error);
@@ -58,7 +59,7 @@ const copyFile = function (filePath, filePathDestination) {
             return;
         }
 
-        createNecessaryDirectories(filePathDestination);
+        createNecessaryDirectoriesSync(filePathDestination);
         fs.copyFile(filePath, filePathDestination, (error) => {
             if (error) {
                 reject(error);
@@ -76,7 +77,7 @@ const copyDirectory = function (directoryPath, directoryPathDestination) {
             return;
         }
 
-        createNecessaryDirectories(directoryPathDestination);
+        createNecessaryDirectoriesSync(directoryPathDestination);
 
         fs.readdir(directoryPath, { withFileTypes: true}, (error, dirents) => {
             if (error) {

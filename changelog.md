@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.1.0
+
+expose
+
+ * createNecessaryDirectoriesSync(filePath)
+
 ## 12.0.0
 
 add
