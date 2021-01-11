@@ -6,6 +6,8 @@ file-functions for node.js that return Promises
 
 Promise based file system functionality is now supported natively in node.js via ```require('fs').promises```
 
+However some function like copyFile from filesac do the right thing. Create subfolders if missing for example.
+
 ## Installation
 
 [`npm i filesac`](https://www.npmjs.com/package/filesac)
@@ -14,7 +16,6 @@ Promise based file system functionality is now supported natively in node.js via
     
 ```
 import {
-    textFileContent,
     writeTextInFile,
     concatenateFiles,
     copyFile,

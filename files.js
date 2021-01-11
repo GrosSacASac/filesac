@@ -1,5 +1,4 @@
 export {
-    textFileContent,
     writeTextInFile,
     concatenateFiles,
     copyFile,
@@ -9,6 +8,7 @@ export {
     createNecessaryDirectoriesSync,
 };
 import fs from "fs";
+import fsPromises from "fs/promises";
 import path from "path";
 
 
@@ -20,34 +20,16 @@ const createNecessaryDirectoriesSync = function (filePath) {
     fs.mkdirSync(directoryname, { recursive: true });
 };
 
-const textFileContent = function (filePath) {
-    return new Promise(function (resolve, reject) {
-        fs.readFile(filePath, `utf-8`, function (error, data) {
-            if (error) {
-                reject(error);
-                return;
-            }
-            resolve(data);
-        });
-    });
-};
-
 const writeTextInFile = function (filePath, string) {
-    return new Promise(function (resolve, reject) {
-        createNecessaryDirectoriesSync(filePath);
-        fs.writeFile(filePath, string, `utf-8`, function (error) {
-            if (error) {
-                reject(error);
-                return;
-            }
-            resolve();
-        });
-    });
+    createNecessaryDirectoriesSync(filePath);
+    return fsPromises.writeFile(filePath, string);
 };
 
 
 const concatenateFiles = function (files, destination, separator = ``) {
-    return Promise.all(files.map(textFileContent)).then(function (contents) {
+    return Promise.all(files.map(function (filePath) {
+        return fsPromises.readFile(filePath, `utf-8`);
+    })).then(function (contents) {
         return writeTextInFile(destination, contents.join(separator));
     });
 };
@@ -60,13 +42,9 @@ const copyFile = function (filePath, filePathDestination) {
         }
 
         createNecessaryDirectoriesSync(filePathDestination);
-        fs.copyFile(filePath, filePathDestination, (error) => {
-            if (error) {
-                reject(error);
-                return;
-            }
-            resolve();
-        });
+        return fsPromises.copyFile(filePath, filePathDestination)
+            .then(resolve)
+            .catch(reject);
     });
 };
 

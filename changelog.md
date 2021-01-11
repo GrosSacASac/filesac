@@ -1,5 +1,24 @@
 # Changelog
 
+## 13.0.0
+
+Remove
+
+ * functions that have stable fs/promise equivalent
+
+```js
+import fsPromises from "fs/promises";
+
+// old
+textFileContent(x);
+// new 
+fsPromises.readFile(x, `utf-8`);
+```
+
+Requires 
+
+ * Node 14+
+
 ## 12.1.0
 
 expose
