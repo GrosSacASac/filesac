@@ -1,6 +1,6 @@
 {
 	"name": "filesac",
-	"version": "13.0.0",
+	"version": "13.1.0",
 	"description": "File utility functions",
 	"license": "CC0-1.0",
 	"type": "module",

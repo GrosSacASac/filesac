@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.1.0
+
+copyDirectory no longer resolves with Arrays filled with undefined
+
 ## 13.0.0
 
 Remove
