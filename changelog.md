@@ -1,5 +1,9 @@
 # Changelog
 
+## 14.0.0
+
+Use npm 8, prefer to use node: imports
+
 ## 13.1.0
 
 copyDirectory no longer resolves with Arrays filled with undefined

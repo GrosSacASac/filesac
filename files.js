@@ -7,9 +7,9 @@ export {
     namesInDirectory,
     createNecessaryDirectoriesSync,
 };
-import fs from "fs";
-import fsPromises from "fs/promises";
-import path from "path";
+import fs from "node:fs";
+import fsPromises from "node:fs/promises";
+import path from "node:path";
 
 
 const createNecessaryDirectoriesSync = function (filePath) {
