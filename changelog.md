@@ -15,7 +15,7 @@ Remove
  * functions that have stable fs/promise equivalent
 
 ```js
-import fsPromises from "fs/promises";
+import fsPromises from "node:fs/promises";
 
 // old
 textFileContent(x);
