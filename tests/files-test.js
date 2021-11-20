@@ -3,7 +3,8 @@ import {
     concatenateFiles,
     copyFile,
     copyDirectory,
-    deleteFile
+    deleteFile,
+    createNecessaryDirectoriesSync
 } from "../files.js";
 import fsPromises from "fs/promises";
 
@@ -22,6 +23,7 @@ const pathDeep = `${a}/${b}/c.txt`;
 //     });
 // });
 // writeTextInFile(pathDeep, initialString)
+createNecessaryDirectoriesSync(pathDeep);
 fsPromises.writeFile(pathDeep, initialString+"uuuuu");
 // textFileContent("tests/folder/text.txt",).then(async function (result) {
 //     // console.log(`success`, result === initialString);
