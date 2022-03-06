@@ -6,6 +6,7 @@ export {
     deleteFile,
     namesInDirectory,
     createNecessaryDirectoriesSync,
+    emptyDirectory,
 };
 import fs from "node:fs";
 import fsPromises from "node:fs/promises";
@@ -82,20 +83,14 @@ const copyDirectory = function (directoryPath, directoryPathDestination) {
     });
 };
 
+const deleteOptions = {
+    force: true,
+    recursive: true,
+    maxRetries: 1,
+};
+
 const deleteFile = function (sourcePath) {
-    return new Promise(function (resolve, reject) {
-        fs.unlink(sourcePath, function (error) {
-            if (error && error.code === `ENOENT`) {
-                // file doens't exist
-                resolve();
-            } else if (error) {
-                // other errors, e.g. maybe we don't have enough permission
-                reject(`Error occurred while trying to remove file ${sourcePath}`);
-            } else {
-                resolve();
-            }
-        });
-    });
+    return fsPromises.rm(sourcePath, deleteOptions);
 };
 
 const namesInDirectory = function (directoryPath) {
@@ -107,5 +102,13 @@ const namesInDirectory = function (directoryPath) {
             }
             resolve(files);
         });
+    });
+};
+
+const emptyDirectory = function (directoryPath) {
+    return namesInDirectory(directoryPath).then(function (files) {
+        return Promise.all(files.map(name => {
+            return path.join(directoryPath, name);
+        }).map(deleteFile));
     });
 };

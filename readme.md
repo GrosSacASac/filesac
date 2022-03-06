@@ -23,6 +23,7 @@ import {
     deleteFile,
     namesInDirectory,
     createNecessaryDirectoriesSync,
+    emptyDirectory,
 } from "filesac";
 ```
 

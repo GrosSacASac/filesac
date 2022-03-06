@@ -4,7 +4,8 @@ import {
     copyFile,
     copyDirectory,
     deleteFile,
-    createNecessaryDirectoriesSync
+    createNecessaryDirectoriesSync,
+    emptyDirectory,
 } from "../files.js";
 import fsPromises from "fs/promises";
 
@@ -23,8 +24,8 @@ const pathDeep = `${a}/${b}/c.txt`;
 //     });
 // });
 // writeTextInFile(pathDeep, initialString)
-createNecessaryDirectoriesSync(pathDeep);
-fsPromises.writeFile(pathDeep, initialString+"uuuuu");
+// createNecessaryDirectoriesSync(pathDeep);
+// fsPromises.writeFile(pathDeep, initialString+"uuuuu");
 // textFileContent("tests/folder/text.txt",).then(async function (result) {
 //     // console.log(`success`, result === initialString);
 //     console.log(result);
@@ -41,3 +42,5 @@ fsPromises.writeFile(pathDeep, initialString+"uuuuu");
 // copyFile("tests/folder/text.txt", "tests/xxx/copy.txt").then(console.log)
 
 // copyFile(`tests/files-test.js`, `copyFile/files-test.js`)
+
+emptyDirectory("myCopy").then(console.log).catch(console.error);

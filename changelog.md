@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.1.0
+
+deleteFile can delete directories too
+
+add emptyDirectory function
+
 ## 14.0.0
 
 Use npm 8, prefer to use node: imports
