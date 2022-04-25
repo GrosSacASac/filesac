@@ -13,8 +13,8 @@ However some function like copyFile from filesac do the right thing. Create subf
 [`npm i filesac`](https://www.npmjs.com/package/filesac)
 
 ## Import
-    
-```
+
+```js
 import {
     writeTextInFile,
     concatenateFiles,
@@ -32,7 +32,6 @@ import {
 ### Changelog
 
 [Changelog](./changelog.md)
-
 
 ### License
 
