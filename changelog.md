@@ -59,6 +59,7 @@ remove
 ## 11.1.0
 
 add
+
  * namesInDirectory
 
 ## 11.0.0
