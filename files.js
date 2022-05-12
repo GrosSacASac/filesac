@@ -94,6 +94,7 @@ const deleteFile = function (sourcePath) {
     return fsPromises.rm(sourcePath, deleteOptions);
 };
 
+// todo deprecate in favor of await fsPromises.readdir
 const namesInDirectory = function (directoryPath) {
     return new Promise(function (resolve, reject) {
         fs.readdir(directoryPath, function (error, files) {
@@ -105,10 +106,11 @@ const namesInDirectory = function (directoryPath) {
         });
     });
 };
+
 /**
- * 
+ * returns all the filenames, files in subfolders will have their subfolders in the name
  * @param {string} directoryPath 
- * @returns [<string>]
+ * @returns {Promise [<string>]}
  */
 const namesInDirectoryRecursive = async function (directoryPath) {
     const dirents = await fsPromises.readdir(directoryPath, {withFileTypes: true});
