@@ -6,6 +6,7 @@ import {
     deleteFile,
     createNecessaryDirectoriesSync,
     emptyDirectory,
+    namesInDirectoryRecursive,
 } from "../files.js";
 import fsPromises from "fs/promises";
 
@@ -43,4 +44,5 @@ const pathDeep = `${a}/${b}/c.txt`;
 
 // copyFile(`tests/files-test.js`, `copyFile/files-test.js`)
 
-emptyDirectory("myCopy").then(console.log).catch(console.error);
+// emptyDirectory("myCopy").then(console.log).catch(console.error);
+console.log(await namesInDirectoryRecursive("./node_modules/@eslint"));

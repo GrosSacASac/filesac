@@ -1,5 +1,9 @@
 # Changelog
 
+# 14.2.0
+
+add namesInDirectoryRecursive
+
 ## 14.1.0
 
 deleteFile can delete directories too

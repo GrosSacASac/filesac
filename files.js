@@ -5,6 +5,7 @@ export {
     copyDirectory,
     deleteFile,
     namesInDirectory,
+    namesInDirectoryRecursive,
     createNecessaryDirectoriesSync,
     emptyDirectory,
 };
@@ -103,6 +104,24 @@ const namesInDirectory = function (directoryPath) {
             resolve(files);
         });
     });
+};
+/**
+ * 
+ * @param {string} directoryPath 
+ * @returns [<string>]
+ */
+const namesInDirectoryRecursive = async function (directoryPath) {
+    const dirents = await fsPromises.readdir(directoryPath, {withFileTypes: true});
+    return (await Promise.all(dirents.map(async (dirent) => {
+        if (dirent.isFile()) {
+            return dirent.name;
+        }
+        if (dirent.isDirectory()) {
+            return (await namesInDirectoryRecursive(path.join(directoryPath, dirent.name))).map(temp => {
+                return `${dirent.name}/${temp}`;
+            });
+        }
+    }))).filter(Boolean).flat(Infinity);
 };
 
 const emptyDirectory = function (directoryPath) {

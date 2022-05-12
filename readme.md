@@ -22,6 +22,7 @@ import {
     copyDirectory,
     deleteFile,
     namesInDirectory,
+    namesInDirectoryRecursive,
     createNecessaryDirectoriesSync,
     emptyDirectory,
 } from "filesac";
